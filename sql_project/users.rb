@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative('questions_database')
 
 class Users
@@ -36,7 +37,8 @@ class Users
       WHERE
         id = ?
     SQL
-    Users.new(users.first)
+    return Users.new(users.first) if users.length > 0
+    return nil
   end
 
   def self.exists?(user)
